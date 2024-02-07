@@ -98,7 +98,7 @@ function resolveSuccessType(num, roll, showBranches) {
         if (roll == 1)
             return { description: 'Desastre', isSuccess: false };
     }
-    if (roll > num)
+    if (roll < num)
         return { description: 'Fracasso', isSuccess: false };
 }
 
