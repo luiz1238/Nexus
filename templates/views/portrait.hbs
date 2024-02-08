@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head title="Portrait" ignore_bootstrap=1 ignore_axios=1}}
+    <script>socket.emit('room:join', 'portrait' + '{{playerID}}'); const playerID = {{ playerID }};</script>
+    <link rel="stylesheet" href="/styles/portrait.css">
+    <script src="/scripts/portrait.js" defer></script>
+</head>
+
+<body data-status-state="{{statusState}}">
+    <div class="container shadow" id="mainContainer">
+        <img id="background" src="/assets/avatar_bg.png" class="bottom">
+
+        <img id="avatar" class="middle" style="display: none;">
+
+        <div class="energy-container">
+            <div class="energy top">
+                {{#if attributes.2.visible}}{{attributes.2.value}}{{else}}?{{/if}}
+            </div>
+        </div>
+    </div>
+
+    <img id="lineage" src="/assets/lineages/frameless/{{playerLineageID}}/{{player.index}}.png" class="middle"
+        data-lineage="{{playerLineageID}}" data-level="{{player.level}}" {{#unless playerLineageID}}hidden{{/unless}}>
+
+    <div class="container switchable" id="idleText" {{#if onCombat}}style="display: none;" {{/if}}>
+        <div class="name top">{{#if info.visible}}{{info.value}}{{else}}???{{/if}}</div>
+    </div>
+
+    <div class="container switchable" id="combatText" {{#unless onCombat}}style="display: none;" {{/unless}}>
+        <div class="combat">
+            <div class="health top">
+                {{#if attributes.0.visible}}{{attributes.0.value}}/{{attributes.0.total_value}}{{else}}?/?{{/if}}
+            </div>
+            <div class="sanity top">
+                {{#if attributes.1.visible}}{{attributes.1.value}}/{{attributes.1.total_value}}{{else}}?/?{{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container dice">
+        <video height="300" muted class="popout">
+            <source src="/assets/dice_animation.webm">
+        </video>
+        <div class="result" style="display: none;">20</div>
+        <div class="description" style="display: none;">Normal</div>
+        <div class="modifier" style="display: none;">0</div>
+    </div>
+</body>
+
+</html>
