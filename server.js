@@ -46,6 +46,7 @@ const register = require('./routes/register');
 const sheet = require('./routes/sheet');
 const dice = require('./routes/dice');
 const avatar = require('./routes/avatar');
+const portrait = require('./routes/portrait');
 //End Routes
 
 app.get('/', (req, res) => {
@@ -57,6 +58,7 @@ app.use('/login', login);
 app.use('/sheet', sheet);
 app.use('/dice', dice);
 app.use('/avatar', avatar);
+app.use('/portrait', portrait);
 
 app.get('*', (req, res) => {
     res.status(404).end();
