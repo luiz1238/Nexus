@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{> head ignore_jquery=1 ignore_socketio=1 ignore_axios=1}}
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="row my-4">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div class="col col-md-9 col-lg-6 col-xl-3">
+                        <img id="logo" class="img-fluid" src="/assets/logo.png" alt="Logo">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col h3">
+                        Selecione o retrato que deseja acessar.
+                    </div>
+                </div>
+                {{#each players}}
+                {{#with this}}
+                <div class="row my-2">
+                    <div class="col">
+                        <a href="/portrait/{{player_id}}" class="h5">{{value}} ({{player_id}})</a>
+                    </div>
+                </div>
+                {{/with}}
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
